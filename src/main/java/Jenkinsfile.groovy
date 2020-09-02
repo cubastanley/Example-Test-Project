@@ -22,11 +22,8 @@ pipeline {
         
         stage ('Test Unstable') {
             steps {
-                sh 'mvn test -PtestFailure'
-            }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml'
+                withMaven() {
+                    sh 'mvn test -PtestFailure'
                 }
             }
         }
