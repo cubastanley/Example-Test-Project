@@ -31,10 +31,10 @@ pipeline {
             }
         }
         
-        stage ('Build Failure') {
-            steps {
-                sh 'mvn -B -DskipTests -PbuildFailure clean install'
-            }
-        }
+        // stage ('Build Failure') {
+        //     steps {
+        //         sh 'mvn -B -DskipTests -PbuildFailure clean install'
+        //     }
+        // }
     }
 }
