@@ -42,4 +42,9 @@ public class TestObjectFailure {
     public void testObject_Fail() {
         assertTrue(false);
     }
+
+    @Test
+    public void testPass() {
+        assertTrue(true);
+    }
 }
