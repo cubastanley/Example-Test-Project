@@ -38,6 +38,7 @@ public class TestObjectFailure {
     }
 
     //Test Method - ALWAYS FAILS
+    @Test
     public void testObject_Fail() {
         assertTrue(false);
     }

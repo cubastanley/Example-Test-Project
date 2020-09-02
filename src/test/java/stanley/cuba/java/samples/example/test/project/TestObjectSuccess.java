@@ -38,6 +38,7 @@ public class TestObjectSuccess {
     }
 
     // Test Method - Always Passes
+    @Test
     public void testObject_Pass() {
         assertTrue(true);
     }
