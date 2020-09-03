@@ -3,7 +3,12 @@ pipeline {
   stages {
     stage('Build Success') {
       steps {
-        sh 'mvn -B -DskipTests clean install'
+        sh 'mvn -B clean install'
+      }
+      post {
+        always {
+          junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml')
+        }
       }
     }
 
