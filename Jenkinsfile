@@ -3,13 +3,11 @@ pipeline {
   stages {
     stage('Build Success') {
       steps {
-        sh 'mvn -B clean install'
+        sh 'mvn -B -Dmaven.test.failure.ignore clean install'
       }
       post {
         always {
-          catchError(stageResult: 'UNSTABLE') {
-            junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml')
-          }
+           junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml')
         }
       }
     }
