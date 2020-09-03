@@ -11,14 +11,22 @@ pipeline {
       steps {
         sh 'mvn test -PtestSuccess'
       }
+      post {
+        always {
+          junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml')
+        }
+      }
     }
 
     stage('Test Unstable') {
       steps {
         sh 'mvn test -PtestFailure'
-        junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml')
+      }
+        post {
+        always {
+          junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml')
+        }
       }
     }
-
   }
 }
