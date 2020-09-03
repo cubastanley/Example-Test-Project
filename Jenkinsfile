@@ -7,7 +7,9 @@ pipeline {
       }
       post {
         always {
-          junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml')
+          catchError(stageResult: 'UNSTABLE') {
+            junit(allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml')
+          }
         }
       }
     }
